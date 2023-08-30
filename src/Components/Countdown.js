@@ -1,6 +1,6 @@
-export default function Countdown({ timeRemaining }) {
+export default function Countdown({ timeRemaining, onClick}) {
     if(!timeRemaining){
-        return (<div className="time-over">Time is up!</div>)
+        return (<div className="time-over" onClick={onClick}>Time is up!</div>)
     }
     return(
         <div className="countdown-container">

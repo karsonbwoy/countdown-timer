@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import './Timer.css'
 import TimerInput from "./TimerInput.js";
 import Countdown from "./Countdown.js";
+import alarm from '../assets/alarm.mp3'
 export default function Timer() {
 
     const [timeRemaining, setTimeRemaining] = useState({
@@ -19,6 +20,22 @@ export default function Timer() {
     }
 
     useEffect(() => saveDate(targetDate),[targetDate])
+
+    const alarmRef = useRef(null);
+
+    useEffect(()=>{
+        if (timeRemaining.days === 0 && timeRemaining.hours === 0 && timeRemaining.minutes === 0 && timeRemaining.seconds === 0) {
+            if (alarmRef.current) {
+                alarmRef.current.play();
+                console.log('Alarm played');
+              }
+        } else if(timeRemaining){
+            if (alarmRef.current) {
+                alarmRef.current.pause();
+              }
+            
+        }
+    },[timeRemaining])
 
     useEffect(() => {
         const calculateTimeRemaining = () => {
@@ -48,10 +65,14 @@ export default function Timer() {
     function handleChange (changedDate){
         setTargetDate(changedDate)
     }
-
+    function handlePause() {
+        alarmRef.current.pause();
+        alarmRef.current.currentTime = 0
+    }
     return (
         <>
-            <Countdown timeRemaining = {timeRemaining}/>
+            <audio ref={alarmRef} src={alarm}/>
+            <Countdown timeRemaining = {timeRemaining} onClick = {handlePause}/>
             <TimerInput onChange = {handleChange} value = {targetDate}></TimerInput>
         </>
       );
