@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import './Timer.css'
-
+import TimerInput from "./TimerInput.js";
 export default function Timer() {
 
     const [timeRemaining, setTimeRemaining] = useState({
@@ -10,11 +10,16 @@ export default function Timer() {
         seconds: 0
     })
 
+    const [targetDate, setTargetDate] = useState()
+
     useEffect(() => {
         const calculateTimeRemaining = () => {
-            const targetDate = new Date('2023-12-31T00:00:00')
+            if (!targetDate) {
+                return null;
+            }
+            const convertedDate = new Date(targetDate)
             const now = new Date().getTime()
-            const distance = targetDate.getTime() - now
+            const distance = convertedDate.getTime() - now
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -29,26 +34,33 @@ export default function Timer() {
         const timer = setInterval(calculateTimeRemaining, 1000);
 
         return () => clearInterval(timer);
-    }, [])
+    }, [targetDate])
+
+    function handleChange (changedDate){
+        setTargetDate(changedDate)
+    }
 
     return (
-        <div className="countdown-container">
-          <div className="time-block">
-            <div className="time">{timeRemaining.days}</div>
-            <div className="label">Days</div>
-          </div>
-          <div className="time-block">
-            <div className="time">{timeRemaining.hours}</div>
-            <div className="label">Hours</div>
-          </div>
-          <div className="time-block">
-            <div className="time">{timeRemaining.minutes}</div>
-            <div className="label">Minutes</div>
-          </div>
-          <div className="time-block">
-            <div className="time">{timeRemaining.seconds}</div>
-            <div className="label">Seconds</div>
-          </div>
-        </div>
+        <>
+            <TimerInput onChange = {handleChange}></TimerInput>
+            <div className="countdown-container">
+            <div className="time-block">
+                <div className="time">{timeRemaining.days}</div>
+                <div className="label">Days</div>
+            </div>
+            <div className="time-block">
+                <div className="time">{timeRemaining.hours}</div>
+                <div className="label">Hours</div>
+            </div>
+            <div className="time-block">
+                <div className="time">{timeRemaining.minutes}</div>
+                <div className="label">Minutes</div>
+            </div>
+            <div className="time-block">
+                <div className="time">{timeRemaining.seconds}</div>
+                <div className="label">Seconds</div>
+            </div>
+            </div>
+        </>
       );
 }
