@@ -11,6 +11,8 @@ export default function TimerInput({ onChange, value }) {
                 className ='timer-input-field'
                 value = {value}
                 onChange = {e => onChange(e.target.value)}
+                max="2025-12-31T23:59" 
+                min="2020-01-01T00:00" 
             >
             </input>
         </div>
