@@ -10,7 +10,8 @@ export default function TimerInput({ onChange, value }) {
                 id="target-time-input" 
                 className ='timer-input-field'
                 value = {value}
-                onChange = {e => onChange(e.target.value)}>
+                onChange = {e => onChange(e.target.value)}
+            >
             </input>
         </div>
     );

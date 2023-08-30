@@ -1,28 +1,45 @@
+/* TimerInput.css */
+
 .timer-input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem; /* Increased margin for better spacing */
+}
+
+.timer-input-label {
+  font-size: 1rem; /* Increased font size for consistency */
+  margin-bottom: 0.5rem;
+  color: #444; /* Slightly darker color for label */
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Slightly increased letter spacing */
+  font-weight: bold; /* Bold label for emphasis */
+}
+
+.timer-input-field {
+  padding: 0.7rem;
+  font-size: 1.2rem; /* Larger font size for visibility */
+  border: 2px solid #ccc; /* Slightly thicker border */
+  border-radius: 8px; /* More rounded corners */
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition for both border and shadow */
+}
+
+.timer-input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4); /* Slightly stronger shadow on focus */
+}
+
+/* Styling for smaller screens */
+@media screen and (max-width: 768px) {
   .timer-input-label {
-    font-size: 0.8rem;
-    margin-bottom: 0.3rem;
-    color: #555;
-    text-transform: uppercase;
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
   }
   
   .timer-input-field {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
+    font-size: 1rem; /* Adjust font size for smaller screens */
   }
-  
-  .timer-input-field:focus {
-    border-color: #007bff;
-  }
+}

@@ -1,32 +1,68 @@
+/* CountdownTimer.css */
+
 .countdown-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem; /* Increased margin for better spacing */
+  font-family: 'Poppins', sans-serif; /* A sleek and elegant font */
+}
+
+.time-block {
+  text-align: center;
+  margin: 0 3rem; /* Increased spacing between blocks */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.time {
+  font-size: 6rem; /* Larger font size for emphasis */
+  font-weight: 600;
+  color: #333; /* Darkened color for better contrast */
+  letter-spacing: -0.04em; /* Slightly adjusted letter spacing */
+  transition: font-size 0.3s ease; /* Transition for font size change */
+}
+
+.label,
+.time-over {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #777; /* Slightly lighter color for labels */
+  transition: color 0.3s ease; /* Transition for color change */
+}
+
+.time-over {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  font-size: 2.2rem; /* Slightly larger font size for time-over message */
+  color: #ff6b6b; /* Vibrant color for time-over message */
+  transition: font-size 0.3s ease, color 0.3s ease; /* Transition for font size and color change */
+}
+
+/* Add a gradient background with a subtle pattern to the countdown blocks */
+.time-block {
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  border-radius: 12px;
+  padding: 3rem 2rem; /* Increased padding for better spacing */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for transform and box-shadow changes */
+}
+
+/* Scale blocks and add shadow on hover for interactive feel */
+.time-block:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for responsive layout on smaller screens */
+@media screen and (max-width: 768px) {
+  .countdown-container {
+    flex-direction: column; /* Stack blocks vertically on small screens */
     align-items: center;
-    margin-top: 2rem;
-    font-family: Arial, sans-serif;
   }
   
   .time-block {
-    text-align: center;
-    margin: 0 1rem;
+    margin: 2rem 0; /* Adjust margin for better spacing */
   }
-  
-  .time {
-    font-size: 2rem;
-    font-weight: bold;
-
-  }
-  
-  .label, .time-over {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .time-over{
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 1rem;
-    font-size: 2rem;
-    color: rgb(100, 92, 81);
-  }
+}
