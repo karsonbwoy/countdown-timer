@@ -1,0 +1,28 @@
+.timer-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .timer-input-label {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    color: #555;
+    text-transform: uppercase;
+  }
+  
+  .timer-input-field {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .timer-input-field:focus {
+    border-color: #007bff;
+  }
